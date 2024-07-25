@@ -1,11 +1,15 @@
 from flask import Flask, request, jsonify
 import pandas as pd
 import joblib
+from flask_cors import CORS  # Importa CORS
 # import requests
 from sklearn.preprocessing import StandardScaler, OrdinalEncoder
 from scipy.cluster.hierarchy import fcluster
 
 app = Flask(__name__)
+
+# Configurar CORS
+CORS(app)  # Habilita CORS para todas las rutas
 
 # Cargar los modelos y el preprocesador
 encoder = joblib.load('encoder.pkl')
